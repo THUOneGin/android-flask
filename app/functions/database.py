@@ -418,6 +418,7 @@ def db_get_all_comments_by_blog_id(blog_id):
 def db_add_message(username, friend_name, content):
     try:
         now = datetime.datetime.now()
+        '''
         friend_list = []
         cursor = db.session.execute("SELECT username_2 FROM friendship WHERE username_1 = '" + username + "';")
         for cur in cursor:
@@ -427,6 +428,7 @@ def db_add_message(username, friend_name, content):
             friend_list.append(cur[0])
         if friend_name not in friend_list:
             return False, 'no such friend'
+        '''
         chat_message = ChatMessage(username_1=username, username_2=friend_name, content=content, time=now)
         db.session.add(chat_message)
         db.session.commit()
